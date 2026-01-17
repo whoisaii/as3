@@ -11,8 +11,8 @@ public class ProductDAO {
                     + product.getName() + "', " + product.getPrice() + ")";
             stmt.executeUpdate(sql);
             conn.close();
-        } catch (Exception e) {
-            System.out.println("что-то пошло не так при добавлении продукта");
+        } catch (SQLException e) {
+            System.out.println("Ошибка базы: " + e.getMessage()); // Теперь ты увидишь, что именно не нравится базе
         }
     }
 

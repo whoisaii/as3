@@ -10,7 +10,7 @@ public class DBConnection {
                     "1234"
             );
         } catch (Exception e) {
-            System.out.println("не получилось подключиться к базе");
+            e.printStackTrace();
             return null;
         }
     }

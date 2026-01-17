@@ -54,5 +54,9 @@ public class Main {
 
         productDAO.updatePrice(102, 230000);
         productDAO.delete(103);
+        System.out.println("\nProducts from database (after changes):");
+        for (Product p : productDAO.getAll()) {
+            System.out.println(p);
+        }
     }
 }
