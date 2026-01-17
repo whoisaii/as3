@@ -1,4 +1,4 @@
-class Shopper extends BaseObject {
+public class Shopper extends BaseObject {
     private String name;
 
     public Shopper(int id, String name) {
@@ -6,7 +6,9 @@ class Shopper extends BaseObject {
         this.name = name;
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
     @Override
     public String toString() {
