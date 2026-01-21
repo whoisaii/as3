@@ -1,19 +1,20 @@
 import java.sql.Connection;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class ShopperDAO {
-
     public void add(Shopper shopper) {
-        try {
-            Connection conn = DBConnection.getConnection();
-            Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO shoppers VALUES (" + shopper.id + ", '"
-                    + shopper.getName() + "')";
-            stmt.executeUpdate(sql);
-            conn.close();
-        } catch (Exception e) {
-            System.out.println("не получилось добавить покупателя");
+        String sql = "INSERT INTO shoppers (id, name) VALUES (?, ?)";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, shopper.id);
+            pstmt.setString(2, shopper.getName());
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Запись с ID " + shopper.id + " уже существует в таблице shoppers.");
         }
     }
 }
-
