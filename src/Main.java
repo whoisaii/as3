@@ -38,14 +38,24 @@ public class Main {
 
         ProductDAO dao = new ProductDAO();
 
-        dao.add(new Product(201, "tablet", 180000));
-
-        System.out.println("Products from database:");
+        dao.add(new Product(205, "tablet", 180000));
+        System.out.println("After INSERT:");
         for (Product p : dao.getAll()) {
             System.out.println(p);
         }
 
-        dao.updatePrice(201, 170000);
-        dao.delete(201);
+
+        dao.updatePrice(101, 170000);
+        System.out.println("\nAfter UPDATE:");
+        for (Product p : dao.getAll()) {
+            System.out.println(p);
+        }
+
+        dao.delete(103);
+        System.out.println("\nAfter DELETE:");
+        for (Product p : dao.getAll()) {
+            System.out.println(p);
+        }
+
     }
 }
